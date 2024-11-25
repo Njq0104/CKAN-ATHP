@@ -21,8 +21,8 @@ def read_fa(path):
     return res
 
 
-model = AutoModel.from_pretrained("D:\pretrain\PubChem10M_SMILES_BPE_450k")
-tokenizer = AutoTokenizer.from_pretrained("D:\pretrain\PubChem10M_SMILES_BPE_450k")
+model = AutoModel.from_pretrained("your pretrain model path")
+tokenizer = AutoTokenizer.from_pretrained("your pretrain model path")
 bert_model = FeatureExtractionPipeline(model=model, tokenizer=tokenizer, return_tensors=True, device=-1)
 
 # encoder_embedding = bert_model(smile).detach().cpu().numpy()[0].sum(axis=0)
@@ -39,9 +39,9 @@ for seq in seq_fa:
     neg_data.append(res)
 neg_data = np.array(neg_data)
 print("neg data", neg_data.shape)
-np.save("PubChem10M_negative.npy", neg_data)
+np.save("PubChem10M_neg.npy", neg_data)
 
-fa_path = "../PubChem10M/pos_test.fa"
+fa_path = "../pos.fa"
 seq_fa = read_fa(fa_path)
 pos_data = []
 for seq in seq_fa:
@@ -52,4 +52,4 @@ for seq in seq_fa:
     pos_data.append(res)
 pos_data = np.array(pos_data)
 print("pos data", pos_data.shape)
-np.save("PubChem10M_test.npy", pos_data)
+np.save("PubChem10M_pos.npy", pos_data)
