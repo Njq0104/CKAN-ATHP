@@ -69,7 +69,7 @@ class KANC_MLP(nn.Module):
         self.flat = nn.Flatten()
 
         # 全连接层
-        self.linear1 = nn.Linear(3520, 256)
+        self.linear1 = nn.LazyLinear(256)
         self.linear2 = nn.Linear(256, 2)
 
     def forward(self, x1, x2, x3):
@@ -270,4 +270,4 @@ def train(model, train_loader, test_loader, criterion, optimizer, num_epochs, sa
 
 
 # 开始训练和测试
-train(model, train_loader, test_loader, criterion, optimizer, num_epochs=60, save_threshold=87.5)
+train(model, train_loader, test_loader, criterion, optimizer, num_epochs, save_threshold)
