@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 # 第一步：加载特征文件
-F = np.load("DistilProtBert.npy")
+F = np.load("feature.npy")
 
 # 获取形状信息
 num_sequences, feature_dim = F.shape  # 输入已经是二维特征 (序列数量, 特征维度)
@@ -40,6 +40,6 @@ augmented_train_data = augment_training_data(train_data, perturbation_factor)
 final_dataset = np.vstack([augmented_train_data, test_data])
 
 # 保存最终的二维数据集到新文件
-np.save("/home/ys/nijiaqi/Convolutional-KANs-master/features/DistilProtBert-0.2.npy", final_dataset)
+np.save("feature-0.2.npy", final_dataset)
 
 print(f"增强后的二维特征文件已保存")
