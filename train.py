@@ -18,9 +18,9 @@ print(f'Using device: {device}')
 seed = 34
 
 # 加载特征矩阵
-X1 = np.load("/home/ys/nijiaqi/Convolutional-KANs-master/features/DistilProtBert.npy")
-X2 = np.load("/home/ys/nijiaqi/Convolutional-KANs-master/features/PubChem10M.npy")
-X3 = np.load("/home/ys/nijiaqi/Convolutional-KANs-master/features/Prot-t5.npy")
+X1 = np.load("DistilProtBert.npy")
+X2 = np.load("PubChem10M.npy")
+X3 = np.load("Prot-t5.npy")
 
 sequences_df = pd.read_csv('cleaned_dataset.csv')
 sequences = sequences_df.iloc[:, 0].values
