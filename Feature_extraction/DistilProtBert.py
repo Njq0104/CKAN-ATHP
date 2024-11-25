@@ -10,7 +10,7 @@ from transformers import BertModel, BertTokenizer
 import re
 
 # 指定本地模型的路径
-local_model_path = "D:\pretrain\DistilProtBert"  # 将此路径修改为您本地模型文件所在的实际路径
+local_model_path = "your pretrain model path"  # 将此路径修改为您本地模型文件所在的实际路径
 
 # 加载本地的分词器和模型
 tokenizer = BertTokenizer.from_pretrained(local_model_path, do_lower_case=False)
@@ -59,7 +59,7 @@ for seq in seq_fa:
     res.append(esm_vec)
 res = np.array(res)
 print(res.shape)
-np.save(f"DistilProtBert_data_negative{dim}.npy", res)
+np.save(f"DistilProtBert_neg.npy", res)
 
 # 处理正样本
 fa_path = "../PubChem10M/pos_test.fa"
@@ -70,4 +70,4 @@ for seq in seq_fa:
     res.append(esm_vec)
 res = np.array(res)
 print(res.shape)
-np.save(f"DistilProtBert_test{dim}.npy", res)
+np.save(f"DistilProtBert_pos.npy", res)
