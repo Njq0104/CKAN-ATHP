@@ -59,18 +59,18 @@ class KANC_MLP(nn.Module):
 
 # 加载保存的模型
 model = KANC_MLP(device=device).to(device)
-model.load_state_dict(torch.load('CKAN_1_stratify_87_79.pth', map_location=device))
+model.load_state_dict(torch.load('your model.pth', map_location=device))
 model.eval()  # 切换到评估模式
 
 # 加载新的特征矩阵
-X1_new = np.load("DistilProtBert_test-0.5.npy")
-X2_new = np.load("PubChem10M_test.npy")
-X3_new = np.load("t5_test.npy")
+X1_new = np.load("DistilProtBert-0.5.npy")
+X2_new = np.load("PubChem10M.npy")
+X3_new = np.load("prot-t5-0.2.npy")
 
 # 加载新的序列和标签（如果有标签文件）
 sequences_new_df = pd.read_csv('filtered_file.csv')
 sequences_new = sequences_new_df.iloc[:, 0].values
-labels_new = torch.tensor(sequences_new_df.iloc[:, 1].values, dtype=torch.long).to(device)  # 假设有真实标签
+labels_new = torch.tensor(sequences_new_df.iloc[:, 1].values, dtype=torch.long).to(device) 
 
 # 将特征矩阵转换为PyTorch张量并调整形状
 X1_new = torch.tensor(X1_new, dtype=torch.float32).unsqueeze(1).unsqueeze(2).to(device)
@@ -78,7 +78,7 @@ X2_new = torch.tensor(X2_new, dtype=torch.float32).unsqueeze(1).unsqueeze(2).to(
 X3_new = torch.tensor(X3_new, dtype=torch.float32).unsqueeze(1).unsqueeze(2).to(device)
 
 # 创建新的DataLoader
-new_dataset = TensorDataset(X1_new, X2_new, X3_new, labels_new)  # 如果没有标签，可以移除 labels_new
+new_dataset = TensorDataset(X1_new, X2_new, X3_new, labels_new)  
 new_loader = DataLoader(new_dataset, batch_size=64, shuffle=False)
 
 # 用于存储预测结果
@@ -121,6 +121,6 @@ df_new_predictions['Sequence'] = all_new_sequences  # 添加序列
 df_new_predictions = df_new_predictions[['Sequence', 'Predicted_Label', 'True_Label', 'Prob_Class_0', 'Prob_Class_1']]
 
 # 保存为CSV文件
-df_new_predictions.to_csv("new_predictions.csv", index=False)
+df_new_predictions.to_csv("predictions.csv", index=False)
 
-print("Prediction complete. Results saved to new_predictions.csv.")
+print("Prediction complete. Results saved to predictions.csv.")
