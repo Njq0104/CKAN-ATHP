@@ -32,15 +32,16 @@ To run the prediction interactively, use the following command:
 docker run -it --rm njq0104/ckan-athp_predictor:latest
 ## You will be prompted to enter peptide sequences, one per line. For example:
 The model will process the input sequences and return predicted results (labels or probabilities)  
-```Enter multiple amino acid sequences (one per line). Type 'exit' and press Enter to finish:
+```
+Enter multiple amino acid sequences (one per line). Type 'exit' and press Enter to finish:
 KLLKELKKLLKLLK
 VDHDHPE
 DIGYY
 FACRRWQWRMAALGA
 exit  
- Prediction Results:
+Prediction Results:
 Sequence: KLLKELKKLLKLLK  | Predicted Label: 0 | Probability: [1.0, 0.0]
 Sequence: VDHDHPE         | Predicted Label: 0 | Probability: [0.95, 0.05]
 Sequence: DIGYY           | Predicted Label: 1 | Probability: [0.35, 0.65]
-Sequence: FACRRWQWRMAALGA | Predicted Label: 0 | Probability: [0.91, 0.09]  
-The model will process the input sequences and return predicted results (such as labels or probabilities), depending on your implementation.
+Sequence: FACRRWQWRMAALGA | Predicted Label: 0 | Probability: [0.91, 0.09]
+
