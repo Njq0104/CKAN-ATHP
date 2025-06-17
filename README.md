@@ -27,5 +27,6 @@ Replace your dataset and feature file in the predcit.py file, then run "python p
 This project is packaged as a Docker image and published on Docker Hub, allowing users to run predictions without manually configuring the environment.
 ## Pull the Image
 docker pull njq0104/ckan-athp_predictor:latest
-
+## Using the Prediction Function
+To run the prediction interactively, use the following command:  
 docker run -it --rm njq0104/ckan-athp_predictor:latest
