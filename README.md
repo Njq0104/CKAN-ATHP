@@ -44,4 +44,4 @@ Sequence: VDHDHPE         | Predicted Label: 0 | Probability: [0.95, 0.05]
 Sequence: DIGYY           | Predicted Label: 1 | Probability: [0.35, 0.65]
 Sequence: FACRRWQWRMAALGA | Predicted Label: 0 | Probability: [0.91, 0.09]
 ```
-The model will process the input sequences and return predicted results (such as labels or probabilities), depending on your implementation.
+The model will process the input sequences and return predicted results (such as labels or probabilities).
